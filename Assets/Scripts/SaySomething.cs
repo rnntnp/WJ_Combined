@@ -29,7 +29,6 @@ public class SaySomething : MonoBehaviour
             transform.parent.GetComponent<ConvGroup>().totalChat += 1;
         if (censor)
         {
-
             StartCoroutine(GameManager.Instance.req.Upload((returnval) =>
             {
                 if (returnval)
@@ -55,9 +54,9 @@ public class SaySomething : MonoBehaviour
             bubble.GetComponentInChildren<TMP_Text>().text = line;
             bubble.SetActive(true);
 
-           
+
             StartCoroutine("fadeout");
-            
+
         }
 
 
@@ -65,11 +64,12 @@ public class SaySomething : MonoBehaviour
 
     private void Update()
     {
-        // if (bubble.activeSelf)
-        // {
-        //     bubble.transform.rotation = Quaternion.LookRotation(bubble.transform.position - camTransform.position);
-        // }
-        if(isTTS){
+        if (bubble.activeSelf)
+        {
+            bubble.transform.rotation = Quaternion.LookRotation(bubble.transform.position - camTransform.position);
+        }
+        if (isTTS)
+        {
 
         }
     }

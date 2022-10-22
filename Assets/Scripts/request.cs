@@ -53,6 +53,18 @@ public class request : MonoBehaviour
         questIsGenerated = true;
         GameManager.Instance.idleAgent.GetComponent<SaySomething>().say("퀘스트를 기다리는중이야!");
     }
+
+    public void NewQuest(int locId)
+    {
+        locationQuest = GameManager.Instance.placeNames[locId];
+        GameManager.Instance.curQuest = curloc;
+        //actionQuest = actionKeyword[Random.Range(0, actionKeyword.Length)];
+        Debug.Log("뽑힌 Keywords : " + locationQuest);
+        //NOTE 여기 일단 지ㅓㅗㅁ
+        StartCoroutine(UploadKeyword(locationQuest));
+        questIsGenerated = true;
+        GameManager.Instance.idleAgent.GetComponent<SaySomething>().say("퀘스트를 기다리는중이야!");
+    }
     public void CheckQuestSuccess()
     {
         if (questIsGenerated == true && locationQuest == currentLocation.text)
@@ -123,7 +135,7 @@ public class request : MonoBehaviour
         string bodyData = JsonUtility.ToJson(body);
         //Debug.Log(bodyData);
         // var postData = System.Text.Encoding.UTF8.GetBytes(bodyData);
-        var req = new UnityWebRequest("http://13.125.138.136:5000/quest_gen", "POST");
+        var req = new UnityWebRequest("http://3.39.9.191:5000/quest_gen", "POST");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(bodyData);
         req.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
         req.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();

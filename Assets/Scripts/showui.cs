@@ -18,13 +18,13 @@ public class showui : MonoBehaviour
         {
             GameManager.Instance.curGroup = GetComponent<ConvGroup>();
             ButtonCanv.transform.rotation = Quaternion.LookRotation(ButtonCanv.transform.position - other.transform.GetComponentInChildren<Camera>().transform.position);
-            GuardBot.transform.position = new Vector3(other.transform.position.x,other.transform.position.y+1.5f,other.transform.position.z);
-            GuardBot.transform.rotation = Quaternion.LookRotation(other.transform.GetComponentInChildren<Camera>().transform.position-GuardBot.transform.position);
-            anim = GuardBot.GetComponent<Animation>();
-            animArray = new List<string>();
-            AnimationArray();
-
-            anim.Play(animArray[0]);
+            // GuardBot.transform.position = new Vector3(other.transform.position.x,other.transform.position.y+1.5f,other.transform.position.z);
+            // GuardBot.transform.rotation = Quaternion.LookRotation(other.transform.GetComponentInChildren<Camera>().transform.position-GuardBot.transform.position);
+            // anim = GuardBot.GetComponent<Animation>();
+            // animArray = new List<string>();
+            // AnimationArray();
+            // anim.Stop("Default");
+            // anim.Play("Angry");
             //anim.wrapMode = WrapMode.Once;
             ButtonCanv.SetActive(true);
             if (!sphere.activeSelf)
@@ -35,10 +35,10 @@ public class showui : MonoBehaviour
     }
     public void AnimationArray() 
     { 
-        foreach (AnimationState state in anim) 
-        {
-            animArray.Add(state.name); 
-        }
+        // foreach (AnimationState state in anim) 
+        // {
+        //     animArray.Add(state.name); 
+        // }
     }
 
 
@@ -47,7 +47,8 @@ public class showui : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             ButtonCanv.SetActive(false);
-            anim.Stop(animArray[0]);
+            // anim.Stop("Angry");
+            // anim.Play("Default");
         }
     }
     // Start is called before the first frame update

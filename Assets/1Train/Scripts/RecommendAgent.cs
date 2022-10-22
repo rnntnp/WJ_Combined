@@ -179,7 +179,11 @@ public class RecommendAgent : Agent
             AddReward(1 - flagVisited[action] / g);
 
             if (debugReward)
+            {
                 Debug.Log("id: " + action + "\n #visited: " + flagVisited[action] + " reward: " + (1 - flagVisited[action] / g));
+                Debug.Log(GameManager.Instance.placeNames[action]);
+                GameManager.Instance.req.NewQuest(action);
+            }
 
             if (warp)
             {

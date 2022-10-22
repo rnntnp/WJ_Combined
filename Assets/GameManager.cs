@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public Transform[] destinations;
     public int curQuest = -1;
     public int starReward;
+
+    public string[] placeNames = { "쥐라기 공원", "거북선", "게임기", "자동차", "교실", "도서관", "놀이터", "행성" };
     public static GameManager Instance
     {
         get
